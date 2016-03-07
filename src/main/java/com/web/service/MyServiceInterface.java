@@ -21,4 +21,6 @@ public interface MyServiceInterface {
 	public User getUser(Long id);
 
 	public void persistUser(User user);
+
+	public Collection getListOfItem(String typeOfItem);
 }

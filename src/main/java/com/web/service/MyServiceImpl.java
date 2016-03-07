@@ -52,7 +52,6 @@ public class MyServiceImpl implements MyServiceInterface {
 			/* If the username mapped to a real user, check password */
 			if (user != null && user.getPassword().equals(password)) {
 				validUser = user;
-
 			}
 		}
 
@@ -86,5 +85,12 @@ public class MyServiceImpl implements MyServiceInterface {
 	public void persistUser(User user) {
 		entityManager.persist(user);
 
+	}
+
+	public Collection getListOfItem(String typeOfItem) {
+		Query query = entityManager.createQuery("from Item where DTYPE = :typeOfItem");
+		query.setParameter("typeOfItem", typeOfItem);
+		List listOfItem = query.getResultList();
+		return listOfItem;
 	}
 }

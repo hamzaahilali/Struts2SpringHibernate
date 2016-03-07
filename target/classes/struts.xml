@@ -10,6 +10,16 @@
 		<action name="LoginFormAction">
 			<result>/Login.jsp</result>
 		</action>
+
+		<action name="LoginAction" class="com.web.action.LoginAction">
+			<result type="redirectAction">
+				<param name="actionName">HomeAction</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="input">/Login.jsp</result>
+		</action>
+
+
 		<action name="RegisterFormAction">
 			<result>/Register.jsp</result>
 		</action>
@@ -21,6 +31,11 @@
 			<result>/SuccessRegister.jsp</result>
 			<result name="input">/Register.jsp</result>
 		</action>
+
+		<action name="HomeAction" class="com.web.action.HomeAction">
+			<result> /HomePage.jsp</result>
+		</action>
+
 	</package>
 
 </struts>

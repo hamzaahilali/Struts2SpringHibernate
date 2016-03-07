@@ -1,24 +1,41 @@
 package com.web.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
 	@Id
 	@GeneratedValue
-	private long id;
+	private long userId;
+
 	private String userName;
 	private String email;
 	private String password;
+	@OneToMany
+	private Collection<Order> Orders = new ArrayList<Order>();
 
-	public String getName() {
-		return userName;
+	public Collection<Order> getOrders() {
+		return Orders;
 	}
 
-	public void setName(String name) {
-		this.userName = name;
+	public void setOrders(Collection<Order> orders) {
+		Orders = orders;
+	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 	public String getEmail() {
@@ -37,11 +54,11 @@ public class User {
 		this.password = password;
 	}
 
-	public long getId() {
-		return id;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 }

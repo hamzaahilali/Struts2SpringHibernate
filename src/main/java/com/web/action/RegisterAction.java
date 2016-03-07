@@ -1,11 +1,15 @@
 package com.web.action;
 
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.web.model.User;
 import com.web.service.MyServiceInterface;
 
-public class RegisterAction extends ActionSupport {
+public class RegisterAction extends ActionSupport implements SessionAware {
 	/**
 	 * 
 	 */
@@ -14,6 +18,7 @@ public class RegisterAction extends ActionSupport {
 	private String email;
 	private String password;
 	private MyServiceInterface myService;
+	private Map session;
 
 	public MyServiceInterface getMyService() {
 		return myService;
@@ -50,11 +55,16 @@ public class RegisterAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		User user = new User();
-		user.setName(userName);
+		user.setUserName(userName);
 		user.setEmail(email);
 		user.setPassword(password);
 		myService.persistUser(user);
+		session.put("user", user);
 		return SUCCESS;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
 
 }
