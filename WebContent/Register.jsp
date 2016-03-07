@@ -9,12 +9,9 @@
 </head>
 <body>
 	<s:form action="RegisterAction">
-		<s:textfield key="userName" label="User Name" />
-		<s:password key="passWord" label = "Password" />
-		<s:textfield key="firstName" label ="First Name"/>
-		<s:textfield key="lastName" label ="Last Name"/>
-		<s:textfield key="email" label = "Email"/>
-		<s:textfield name="age" label="Age" />
+		<s:textfield name="userName" label="Username" />
+		<s:password name="password" label="Password" />
+		<s:textfield name="email" label="Email" />
 		<s:submit />
 	</s:form>
 </body>

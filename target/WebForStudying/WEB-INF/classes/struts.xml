@@ -16,6 +16,11 @@
 		<action name="SuccessLoginAction" class="com.web.action.SuccessLoginAction">
 			<result name="success">/SuccessLogin.jsp</result>
 		</action>
+
+		<action name="RegisterAction" class="com.web.action.RegisterAction">
+			<result>/SuccessRegister.jsp</result>
+			<result name="input">/Register.jsp</result>
+		</action>
 	</package>
 
 </struts>

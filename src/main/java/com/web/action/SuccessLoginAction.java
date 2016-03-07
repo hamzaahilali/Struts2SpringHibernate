@@ -37,15 +37,10 @@ public class SuccessLoginAction extends ActionSupport implements SessionAware {
 
 	@Override
 	public String execute() throws Exception {
-		session.put("user", myService.getUser());
-		System.out.println("Testtingggggggggggggggggggggg");
-		System.out.println("Testtingggggggggggggggggggggg" + myService.getUser());
-		this.setUserName(myService.getUser());
 		return SUCCESS;
 
 	}
 
-	@Override
 	public void setSession(Map<String, Object> session) {
 		// TODO Auto-generated method stub
 		this.session = session;

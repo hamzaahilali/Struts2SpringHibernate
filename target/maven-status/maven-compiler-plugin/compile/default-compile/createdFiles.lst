@@ -1,0 +1,5 @@
+com\web\service\MyServiceImpl.class
+com\web\action\RegisterAction.class
+com\web\service\MyServiceInterface.class
+com\web\model\User.class
+com\web\action\SuccessLoginAction.class
