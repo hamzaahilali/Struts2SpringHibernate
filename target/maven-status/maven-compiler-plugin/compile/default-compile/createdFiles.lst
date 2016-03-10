@@ -1,4 +1,3 @@
-com\web\model\Order.class
 com\web\action\LoginAction.class
 com\web\interceptor\AuthenticationInterceptor.class
 com\web\model\Shoe.class

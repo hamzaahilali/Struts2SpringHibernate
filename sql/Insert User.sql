@@ -1,12 +1,4 @@
-DROP TABLE IF EXISTS cuong.user;
-CREATE TABLE user
-(
-userID bigint(20) NOT NULL AUTO_INCREMENT,
-email varchar(255),
-password varchar(255),
-username varchar(255),
-primary key (userID)
-);
+
 
 INSERT INTO Cuong.user ( userName, email,password )
 			VALUES

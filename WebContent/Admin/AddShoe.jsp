@@ -11,7 +11,7 @@
 	<s:form action="AddShoeAction">
 		<s:textfield name="name" label="Name" />
 		<s:select label="Select shoe's color" headerKey="-1"
-			headerValue="Select Color" list="shoeColors" name="Color" />
+			headerValue="Select Color" list="shoeColors" name="color" />
 		<s:select label="Select shoe's size" headerKey="-1"
 			headerValue="Select Size" list="shoeSizes" name="shoeSize" />
 		<s:textfield name="price" label="Price" />

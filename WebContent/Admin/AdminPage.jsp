@@ -29,7 +29,7 @@
 			<tr>
 				<td><s:property value="#rowStatus.count" /></td>
 				<td><s:property value="name" /></td>
-				<td><s:property value="Color" /></td>
+				<td><s:property value="color" /></td>
 				<td><s:property value="price" /> $</td>
 				<td><s:property value="shoeSize" /></td>
 				<td><a

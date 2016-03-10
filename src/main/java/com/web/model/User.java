@@ -22,13 +22,13 @@ public class User {
 	
 
 	@OneToMany
-	private Collection<Order> Orders = new ArrayList<Order>();
+	private Collection<ShoppingCart> Orders = new ArrayList<ShoppingCart>();
 
-	public Collection<Order> getOrders() {
+	public Collection<ShoppingCart> getOrders() {
 		return Orders;
 	}
 
-	public void setOrders(Collection<Order> orders) {
+	public void setOrders(Collection<ShoppingCart> orders) {
 		Orders = orders;
 	}
 

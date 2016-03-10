@@ -14,7 +14,7 @@
 		src="<s:property value= "myService.imageLocation"/>/<s:property value = "shoe.pic"/>"
 		width="400" height="300" />
 	<ul>
-		<li>Color: <s:property value="shoe.Color" /></li>
+		<li>Color: <s:property value="shoe.color" /></li>
 		<li>Price: <s:property value="shoe.price" /> $
 		</li>
 		<li>Size : <s:property value="shoe.shoeSize" /></li>

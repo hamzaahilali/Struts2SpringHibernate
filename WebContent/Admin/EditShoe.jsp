@@ -12,8 +12,8 @@
 		<s:hidden name="itemID" value="%{shoe.itemID}" />
 		<s:textfield name="name" label="Name" value="%{shoe.name}" />
 		<s:select label="Select shoe's color" headerKey="-1"
-			headerValue="Select Color" list="shoeColors" name="Color"
-			value="%{shoe.Color}" />
+			headerValue="Select Color" list="shoeColors" name="color"
+			value="%{shoe.color}" />
 		<s:select label="Select shoe's size" headerKey="-1"
 			headerValue="Select Size" list="shoeSizes" name="shoeSize"
 			value="%{shoe.shoeSize}" />

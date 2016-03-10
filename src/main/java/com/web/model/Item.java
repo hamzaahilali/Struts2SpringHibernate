@@ -17,7 +17,7 @@ public abstract class Item {
 	private long itemID;
 	private String name;
 	private long price;
-	private String Color;
+	private String color;
 	private String pic;
 
 	public String getName() {
@@ -29,14 +29,17 @@ public abstract class Item {
 	}
 
 	@ManyToMany
-	Collection<Order> Orders = new ArrayList<Order>();
+	Collection<ShoppingCart> shoppingCarts = new ArrayList<ShoppingCart>();
 
-	public Collection<Order> getOrders() {
-		return Orders;
+	
+
+
+	public Collection<ShoppingCart> getShoppingCarts() {
+		return shoppingCarts;
 	}
 
-	public void setOrders(Collection<Order> orders) {
-		Orders = orders;
+	public void setShoppingCarts(Collection<ShoppingCart> shoppingCarts) {
+		this.shoppingCarts = shoppingCarts;
 	}
 
 	public long getItemID() {
@@ -56,11 +59,11 @@ public abstract class Item {
 	}
 
 	public String getColor() {
-		return Color;
+		return color;
 	}
 
 	public void setColor(String color) {
-		Color = color;
+		color = color;
 	}
 
 	public String getPic() {
