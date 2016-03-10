@@ -36,6 +36,85 @@
 			<result> /HomePage.jsp</result>
 		</action>
 
+		<action name="ProductAction" class="com.web.action.ProductAction">
+			<result name="success"> /ShowProduct.jsp</result>
+		</action>
+
+		<action name="AdminLoginForm">
+			<result>/AdminLogin.jsp</result>
+		</action>
+
+		<action name="AdminLoginAction" class="com.web.action.AdminLoginAction">
+			<result type="redirectAction">
+				<param name="actionName">AdminAction</param>
+				<param name="namespace">/secure</param>
+			</result>
+			<result name="input"> /AdminLogin.jsp</result>
+		</action>
 	</package>
 
+
+	<package name="SecureAdmin" namespace="/secure" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="authenticationInterceptor"
+				class="com.web.interceptor.AuthenticationInterceptor" />
+
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="authenticationInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+
+		</interceptors>
+
+		<default-interceptor-ref name="secureStack" />
+
+		<global-results>
+			<result name="login" type="redirect">/AdminLoginForm
+			</result>
+			<result name="error">/Error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="error" />
+		</global-exception-mappings>
+
+		<action name="AdminAction" class="com.web.action.AdminAction">
+			<result name="success">/Admin/AdminPage.jsp</result>
+		</action>
+
+		<action name="AddShoeActionForm" class="com.web.action.AdminAction">
+			<result>/Admin/AddShoe.jsp</result>
+		</action>
+
+		<action name="AddShoeAction" class="com.web.action.AdminAction"
+			method="addShoe">
+			<result type="redirectAction">
+				<param name="actionName">AdminAction</param>
+				<param name="namespace">/secure</param>
+			</result>
+		</action>
+
+		<action name="EditShoeActionForm" class="com.web.action.AdminAction"
+			method="retrieveShoe">
+			<result>/Admin/EditShoe.jsp</result>
+		</action>
+
+		<action name="UpdateShoeAction" class="com.web.action.AdminAction"
+			method="updateShoe">
+			<result type="redirectAction">
+				<param name="actionName">AdminAction</param>
+				<param name="namespace">/secure</param>
+			</result>
+		</action>
+
+		<action name="DeleteAction" class="com.web.action.AdminAction"
+			method="deleteShoe">
+			<result type="redirectAction">
+				<param name="actionName">AdminAction</param>
+				<param name="namespace">/secure</param>
+			</result>
+		</action>
+	</package>
 </struts>

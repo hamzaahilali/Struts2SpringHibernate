@@ -7,6 +7,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<bean id="myService" class="com.web.service.MyServiceImpl">
+	<property name="imageLocation" value="C:/GitHub/WebForStudying/WebContent/Image/" />
 	</bean>
 	<!-- Transaction Manager -->
 

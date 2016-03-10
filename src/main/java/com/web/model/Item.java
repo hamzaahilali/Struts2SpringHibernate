@@ -15,8 +15,19 @@ public abstract class Item {
 	@Id
 	@GeneratedValue
 	private long itemID;
+	private String name;
 	private long price;
 	private String Color;
+	private String pic;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@ManyToMany
 	Collection<Order> Orders = new ArrayList<Order>();
 
@@ -52,4 +63,11 @@ public abstract class Item {
 		Color = color;
 	}
 
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
 }

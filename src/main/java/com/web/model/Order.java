@@ -2,6 +2,7 @@ package com.web.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,25 @@ public class Order {
 	@Id
 	@GeneratedValue
 	private long orderID;
+	private String status;
+	private Date createdDate;
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@ManyToMany(mappedBy = "Orders")
 	Collection<Item> Items = new ArrayList<Item>();
 
@@ -40,6 +60,5 @@ public class Order {
 		}
 		return total;
 	}
-
 
 }

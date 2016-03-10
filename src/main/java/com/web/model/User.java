@@ -19,6 +19,8 @@ public class User {
 	private String userName;
 	private String email;
 	private String password;
+	
+
 	@OneToMany
 	private Collection<Order> Orders = new ArrayList<Order>();
 

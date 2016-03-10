@@ -8,6 +8,7 @@ import com.web.service.MyServiceInterface;
 public class HomeAction extends ActionSupport {
 	MyServiceInterface myService;
 	Collection listOfShoe;
+
 	public Collection getListOfShoe() {
 		return listOfShoe;
 	}
@@ -15,16 +16,6 @@ public class HomeAction extends ActionSupport {
 	public void setListOfShoe(Collection listOfShoe) {
 		this.listOfShoe = listOfShoe;
 	}
-
-	public Collection getListOfClothes() {
-		return listOfClothes;
-	}
-
-	public void setListOfClothes(Collection listOfClothes) {
-		this.listOfClothes = listOfClothes;
-	}
-
-	Collection listOfClothes;
 
 	public MyServiceInterface getMyService() {
 		return myService;
@@ -37,7 +28,6 @@ public class HomeAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		listOfShoe = myService.getListOfItem("Shoe");
-		listOfClothes = myService.getListOfItem("Clothes");
 		return SUCCESS;
 	}
 
