@@ -50,5 +50,20 @@ input[type=button], input[type=submit], input[type=reset] {
 		<s:password name="password" label="Password" />
 		<s:submit />
 	</s:form>
+	<script>
+		function validateForm() {
+			var x = document.forms["myForm"]["name"].value;
+			if (x == null || x == "") {
+				alert("Name must be filled out");
+				return false;
+			}
+		}
+	</script>
+	<form name="myForm" action="LoginAction"
+		onsubmit="return validateForm()" method="post">
+		Name: <input type="text" name="userName"> 
+		Password:	  <input type="password" name="password">
+			  <input type="submit" value="Submit">
+	</form>
 </body>
 </html>

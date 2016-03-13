@@ -9,6 +9,7 @@
 </head>
 <body>
 	<s:form action="UpdateShoeAction">
+		<s:property value="%{shoe.name}" />
 		<s:hidden name="itemID" value="%{shoe.itemID}" />
 		<s:textfield name="name" label="Name" value="%{shoe.name}" />
 		<s:select label="Select shoe's color" headerKey="-1"

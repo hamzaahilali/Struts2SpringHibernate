@@ -15,21 +15,36 @@ public class User {
 	@Id
 	@GeneratedValue
 	private long userId;
-
 	private String userName;
 	private String email;
 	private String password;
-	
+	private String address;
 
-	@OneToMany
-	private Collection<ShoppingCart> Orders = new ArrayList<ShoppingCart>();
-
-	public Collection<ShoppingCart> getOrders() {
-		return Orders;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setOrders(Collection<ShoppingCart> orders) {
-		Orders = orders;
+	public void setAddress(String address) {
+		address = address;
+	}
+
+	public Collection<ShoppingCart> getShoppingCarts() {
+		return shoppingCarts;
+	}
+
+	public void setShoppingCarts(Collection<ShoppingCart> shoppingCarts) {
+		this.shoppingCarts = shoppingCarts;
+	}
+
+	@OneToMany
+	private Collection<ShoppingCart> shoppingCarts = new ArrayList<ShoppingCart>();
+
+	public Collection<ShoppingCart> getShoppingCart() {
+		return shoppingCarts;
+	}
+
+	public void setShoppingCart(Collection<ShoppingCart> shoppingCarts) {
+		this.shoppingCarts = shoppingCarts;
 	}
 
 	public long getUserId() {

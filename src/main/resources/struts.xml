@@ -8,7 +8,7 @@
 
 	<package name="default" namespace="/" extends="struts-default">
 		<action name="LoginFormAction">
-			<result>/Login.jsp</result>
+			<result>User/Login.jsp</result>
 		</action>
 
 		<action name="LoginAction" class="com.web.action.LoginAction">
@@ -16,32 +16,44 @@
 				<param name="actionName">HomeAction</param>
 				<param name="namespace">/</param>
 			</result>
-			<result name="input">/Login.jsp</result>
+			<result name="input">User/Login.jsp</result>
 		</action>
 
 
 		<action name="RegisterFormAction">
-			<result>/Register.jsp</result>
+			<result>User/Register.jsp</result>
 		</action>
 		<action name="SuccessLoginAction" class="com.web.action.SuccessLoginAction">
-			<result name="success">/SuccessLogin.jsp</result>
+			<result name="success">User/SuccessLogin.jsp</result>
 		</action>
 
 		<action name="RegisterAction" class="com.web.action.RegisterAction">
-			<result>/SuccessRegister.jsp</result>
-			<result name="input">/Register.jsp</result>
+			<result>User/SuccessRegister.jsp</result>
+			<result name="input">User/Register.jsp</result>
 		</action>
 
 		<action name="HomeAction" class="com.web.action.HomeAction">
-			<result> /HomePage.jsp</result>
+			<result> User/HomePage.jsp</result>
 		</action>
+		<!-- MObile -->
+		<action name="ShowMobileAction" class="com.web.action.MobileAction"
+			method="showDetail">
+			<result name="success">User/ShowMobileDetail.jsp</result>
+		</action>
+		<!-- PowerBank -->
+		<action name="ShowPowerBankAction" class="com.web.action.PowerBankAction"
+			method="showDetail">
+			<result name="success">User/ShowPowerBankDetail.jsp</result>
+		</action>
+		<!-- Mobile Case -->
 
-		<action name="ProductAction" class="com.web.action.ProductAction">
-			<result name="success"> /ShowProduct.jsp</result>
+		<action name="ShowMobileCaseAction" class="com.web.action.MobileCaseAction"
+			method="showDetail">
+			<result name="success">User/ShowMobileCaseDetail.jsp</result>
 		</action>
 
 		<action name="AdminLoginForm">
-			<result>/AdminLogin.jsp</result>
+			<result>User/AdminLogin.jsp</result>
 		</action>
 
 		<action name="AdminLoginAction" class="com.web.action.AdminLoginAction">
@@ -49,7 +61,7 @@
 				<param name="actionName">AdminAction</param>
 				<param name="namespace">/secure</param>
 			</result>
-			<result name="input"> /AdminLogin.jsp</result>
+			<result name="input">User/AdminLogin.jsp</result>
 		</action>
 	</package>
 
@@ -80,41 +92,88 @@
 				result="error" />
 		</global-exception-mappings>
 
-		<action name="AdminAction" class="com.web.action.AdminAction">
+		<action name="AdminAction" class="com.web.action.HomeAction">
 			<result name="success">/Admin/AdminPage.jsp</result>
 		</action>
 
-		<action name="AddShoeActionForm" class="com.web.action.AdminAction">
+		<action name="AddShoeActionForm" class="com.web.action.HomeAction">
 			<result>/Admin/AddShoe.jsp</result>
 		</action>
 
-		<action name="AddShoeAction" class="com.web.action.AdminAction"
+		<action name="AddShoeAction" class="com.web.action.HomeAction"
 			method="addShoe">
 			<result type="redirectAction">
 				<param name="actionName">AdminAction</param>
 				<param name="namespace">/secure</param>
 			</result>
 		</action>
-
-		<action name="EditShoeActionForm" class="com.web.action.AdminAction"
-			method="retrieveShoe">
-			<result>/Admin/EditShoe.jsp</result>
+		<!-- Mobile ********************************************************** -->
+		<action name="EditMobileActionForm" class="com.web.action.MobileAction"
+			method="showDetail">
+			<result>/Admin/EditMobile.jsp</result>
 		</action>
 
-		<action name="UpdateShoeAction" class="com.web.action.AdminAction"
-			method="updateShoe">
+		<action name="UpdateMobileAction" class="com.web.action.MobileAction"
+			method="updateProduct">
 			<result type="redirectAction">
 				<param name="actionName">AdminAction</param>
 				<param name="namespace">/secure</param>
 			</result>
 		</action>
 
-		<action name="DeleteAction" class="com.web.action.AdminAction"
-			method="deleteShoe">
+		<action name="DeleteMobileAction" class="com.web.action.MobileAction"
+			method="deleteProduct">
 			<result type="redirectAction">
 				<param name="actionName">AdminAction</param>
 				<param name="namespace">/secure</param>
 			</result>
 		</action>
+		<!-- /Mobile********************************************************** -->
+
+		<!-- Mobile Case ***************************************************** -->
+
+		<action name="DeleteMobileCaseAction" class="com.web.action.MobileCaseAction"
+			method="deleteProduct">
+			<result type="redirectAction">
+				<param name="actionName">AdminAction</param>
+				<param name="namespace">/secure</param>
+			</result>
+		</action>
+		<action name="EditMobileCaseActionForm" class="com.web.action.MobileCaseAction"
+			method="showDetail">
+			<result>/Admin/EditMobileCase.jsp</result>
+		</action>
+		<action name="UpdateMobileCaseAction" class="com.web.action.MobileCaseAction"
+			method="updateProduct">
+			<result type="redirectAction">
+				<param name="actionName">AdminAction</param>
+				<param name="namespace">/secure</param>
+			</result>
+		</action>
+
+		<!--/ Mobile Case ***************************************************** -->
+
+		<!-- Power Bank ***************************************************** -->
+		<action name="DeletePowerBankAction" class="com.web.action.PowerBankAction"
+			method="deleteProduct">
+			<result type="redirectAction">
+				<param name="actionName">AdminAction</param>
+				<param name="namespace">/secure</param>
+			</result>
+		</action>
+
+		<action name="EditPowerBankActionForm" class="com.web.action.PowerBankAction"
+			method="showDetail">
+			<result>/Admin/EditPowerBank.jsp</result>
+		</action>
+
+		<action name="UpdatePowerBankAction" class="com.web.action.PowerBankAction"
+			method="updateProduct">
+			<result type="redirectAction">
+				<param name="actionName">AdminAction</param>
+				<param name="namespace">/secure</param>
+			</result>
+		</action>
+		<!-- /Power Bank ***************************************************** -->
 	</package>
 </struts>

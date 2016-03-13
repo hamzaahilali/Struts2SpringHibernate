@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.Collection;
 
 import com.web.model.Admin;
+import com.web.model.Mobile;
+import com.web.model.MobileCase;
+import com.web.model.PowerBank;
 import com.web.model.Shoe;
 import com.web.model.User;
 
@@ -41,4 +44,29 @@ public interface MyServiceInterface {
 	public String persistShoe(Shoe shoe);
 
 	public void updateShoe(Shoe shoe);
+
+	public void persistMobile(Mobile mobile);
+
+	public void persistMobileCase(MobileCase mobileCase);
+
+	public void persistPowerBank(PowerBank powerBank);
+
+	public Mobile getMobile(long id);
+
+	public MobileCase getMobileCase(long id);
+
+	public PowerBank getPowerBank(long id);
+
+	public void deleteMobile(long id);
+
+	public void deleteMobileCase(long id);
+
+	public void deletePowerBank(long id);
+
+	public void updateMobile(Mobile mobile);
+
+	public void updateMobileCase(MobileCase mobileCase);
+
+	public void updatePowerBank(PowerBank powerBank);
+
 }

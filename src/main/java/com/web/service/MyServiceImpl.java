@@ -10,6 +10,9 @@ import javax.persistence.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.web.model.Admin;
+import com.web.model.Mobile;
+import com.web.model.MobileCase;
+import com.web.model.PowerBank;
 import com.web.model.Shoe;
 import com.web.model.User;
 
@@ -94,9 +97,10 @@ public class MyServiceImpl implements MyServiceInterface {
 	}
 
 	public Collection getListOfItem(String typeOfItem) {
-		Query query = entityManager.createQuery("from Item where DTYPE = :typeOfItem");
-		query.setParameter("typeOfItem", typeOfItem);
+		String HQL = "From " + typeOfItem;
+		Query query = entityManager.createQuery(HQL);
 		List listOfItem = query.getResultList();
+
 		return listOfItem;
 	}
 
@@ -167,4 +171,98 @@ public class MyServiceImpl implements MyServiceInterface {
 		entityManager.merge(updateShoe);
 	}
 
+	public void persistMobile(Mobile mobile) {
+		entityManager.persist(mobile);
+	}
+
+	public void persistMobileCase(MobileCase mobileCase) {
+		entityManager.persist(mobileCase);
+	}
+
+	public void persistPowerBank(PowerBank powerBank) {
+		entityManager.persist(powerBank);
+	}
+
+	public Mobile getMobile(long id) {
+		Mobile mobile = entityManager.find(Mobile.class, id);
+		return mobile;
+	}
+
+	public MobileCase getMobileCase(long id) {
+		MobileCase mobileCase = entityManager.find(MobileCase.class, id);
+		return mobileCase;
+	}
+
+	public PowerBank getPowerBank(long id) {
+		PowerBank powerBank = entityManager.find(PowerBank.class, id);
+		return powerBank;
+	}
+
+	public void deleteMobile(long id) {
+		// TODO Auto-generated method stub
+		System.out.println("Enter delete mobile");
+		Mobile mobile = this.getMobile(id);
+		System.out.println("Delete mobile" + mobile.getName());
+		if (mobile != null)
+			entityManager.remove(mobile);
+	}
+
+	public void deleteMobileCase(long id) {
+		MobileCase mobileCase = this.getMobileCase(id);
+		if (mobileCase != null)
+			entityManager.remove(mobileCase);
+	}
+
+	public void deletePowerBank(long id) {
+		PowerBank powerBank = this.getPowerBank(id);
+		if (powerBank != null)
+			entityManager.remove(powerBank);
+	}
+
+	public void updateMobile(Mobile mobile) {
+		// TODO Auto-generated method stub
+		System.out.println(mobile.getName() + " updating");
+
+		Mobile updateMobile = this.getMobile(mobile.getItemID());
+		updateMobile.setName(mobile.getName());
+		updateMobile.setPrice(mobile.getPrice());
+		updateMobile.setPic(mobile.getPic());
+		updateMobile.setColor(mobile.getColor());
+		updateMobile.setCamera(mobile.getCamera());
+		updateMobile.setInternalStorage(mobile.getInternalStorage());
+		updateMobile.setIsSupportExternalCard(mobile.getIsSupportExternalCard());
+
+		updateMobile.setOperatingSystem(mobile.getOperatingSystem());
+		updateMobile.setRam(mobile.getRam());
+		updateMobile.setScreen(mobile.getScreen());
+		updateMobile.setDescription(mobile.getDescription());
+		// System.out.println("update");
+		entityManager.merge(updateMobile);
+	}
+
+	public void updateMobileCase(MobileCase mobileCase) {
+		System.out.println(mobileCase.getName() + " updating");
+
+		MobileCase updateMobileCase = this.getMobileCase(mobileCase.getItemID());
+		updateMobileCase.setName(mobileCase.getName());
+		updateMobileCase.setPrice(mobileCase.getPrice());
+		updateMobileCase.setPic(mobileCase.getPic());
+		updateMobileCase.setColor(mobileCase.getColor());
+		updateMobileCase.setDescription(mobileCase.getDescription());
+		entityManager.merge(updateMobileCase);
+
+	}
+
+	public void updatePowerBank(PowerBank powerBank) {
+		System.out.println(powerBank.getName() + " updating");
+
+		PowerBank updatePowerBank = this.getPowerBank(powerBank.getItemID());
+		updatePowerBank.setName(powerBank.getName());
+		updatePowerBank.setPrice(powerBank.getPrice());
+		updatePowerBank.setPic(powerBank.getPic());
+		updatePowerBank.setColor(powerBank.getColor());
+		updatePowerBank.setCapacity(powerBank.getCapacity());
+		updatePowerBank.setDescription(powerBank.getDescription());
+		entityManager.merge(updatePowerBank);
+	}
 }
