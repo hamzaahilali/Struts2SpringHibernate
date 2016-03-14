@@ -1,9 +1,14 @@
 package com.web.action;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.web.model.Accessory;
+import com.web.model.Item;
 import com.web.model.Mobile;
 import com.web.service.MyServiceInterface;
 
@@ -14,6 +19,8 @@ public class MobileAction extends ActionSupport implements ProductActionInterfac
 	private static final long serialVersionUID = 1L;
 	private Mobile mobile = new Mobile();
 	private MyServiceInterface myService;
+	private List<String> allAccessoriesName = new ArrayList<String>();
+	private List<String> mobileAccessoriesName = new ArrayList<String>();
 
 	public MyServiceInterface getMyService() {
 		return myService;
@@ -31,14 +38,40 @@ public class MobileAction extends ActionSupport implements ProductActionInterfac
 		this.mobile = mobile;
 	}
 
+	public List<String> getAllAccessoriesName() {
+		return allAccessoriesName;
+	}
+
+	public void setAllAccessoriesName(List<String> allAccessoriesName) {
+		this.allAccessoriesName = allAccessoriesName;
+	}
+
+	public List<String> getMobileAccessoriesName() {
+		return mobileAccessoriesName;
+	}
+
+	public void setMobileAccessoriesName(List<String> mobileAccessoriesName) {
+		this.mobileAccessoriesName = mobileAccessoriesName;
+	}
+
 	public String showDetail() {
-		mobile = myService.getMobile(mobile.getItemID());
-		System.out.println(mobile.getIsSupportExternalCard());
+		mobile = myService.getMobileWithAccessory(mobile.getItemID());
+		return SUCCESS;
+	}
+
+	public String editProduct() {
+		mobile = myService.getMobileWithAccessory(mobile.getItemID());
+
+		for (Accessory acc : mobile.getAccessories()) {
+			mobileAccessoriesName.add(acc.getName());
+		}
+
+		allAccessoriesName = (List<String>) myService.getAllAccessoriesName();
+
 		return SUCCESS;
 	}
 
 	public String orderProduct() {
-		// TODO Auto-generated method stub
 		return SUCCESS;
 	}
 
@@ -47,17 +80,14 @@ public class MobileAction extends ActionSupport implements ProductActionInterfac
 	}
 
 	public String deleteProduct() {
-		System.out.println("Enter deleteProduct");
 		System.out.println("ProductId " + mobile.getItemID());
 		myService.deleteMobile(mobile.getItemID());
 		return SUCCESS;
 	}
 
 	public String updateProduct() {
-		System.out.println("Enter updateProduct");
-		myService.updateMobile(mobile);
-		System.out.println("update xong 232323");
-		System.out.println("success update");
+		System.out.println(mobileAccessoriesName.size() + "mbbbb");
+		myService.updateMobile(mobile, mobileAccessoriesName);
 		return SUCCESS;
 	}
 

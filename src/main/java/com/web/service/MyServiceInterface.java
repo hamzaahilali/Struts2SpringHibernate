@@ -3,7 +3,9 @@ package com.web.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
+import com.web.model.Accessory;
 import com.web.model.Admin;
 import com.web.model.Mobile;
 import com.web.model.MobileCase;
@@ -53,6 +55,8 @@ public interface MyServiceInterface {
 
 	public Mobile getMobile(long id);
 
+	public Mobile getMobileWithAccessory(long id);
+
 	public MobileCase getMobileCase(long id);
 
 	public PowerBank getPowerBank(long id);
@@ -63,10 +67,23 @@ public interface MyServiceInterface {
 
 	public void deletePowerBank(long id);
 
-	public void updateMobile(Mobile mobile);
+	public void updateMobile(Mobile mobile, List<String> mobileAccessoriesName);
 
 	public void updateMobileCase(MobileCase mobileCase);
 
 	public void updatePowerBank(PowerBank powerBank);
 
+	public Collection getMobileCases();
+
+	public Collection getPowerBanks();
+
+	public Collection getMobileCasesName();
+
+	public Collection getPowerBanksName();
+
+	public Accessory getAccessory(String name);
+
+	public Collection getAllAccessories();
+
+	public Collection getAllAccessoriesName();
 }

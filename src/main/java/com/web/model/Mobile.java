@@ -3,9 +3,14 @@ package com.web.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.CollectionOfElements;
 
 @Entity
 public class Mobile extends Item {
@@ -18,14 +23,14 @@ public class Mobile extends Item {
 	private Camera camera;
 	private Boolean isSupportExternalCard;
 
-	@OneToMany
+	@ManyToMany(targetEntity = Accessory.class)
 	private Collection<Accessory> accessories = new ArrayList<Accessory>();
 
 	public Mobile() {
 	}
 
 	public Mobile(String operatingSystem, int ram, int internalStorage, Screen screen, Camera camera,
-			boolean isSupportExternalCard) {
+			boolean isSupportExternalCard, String type) {
 
 		this.operatingSystem = operatingSystem;
 		this.ram = ram;

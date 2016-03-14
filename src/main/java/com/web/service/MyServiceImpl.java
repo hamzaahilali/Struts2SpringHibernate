@@ -1,5 +1,6 @@
 package com.web.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import javax.persistence.Query;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.web.model.Accessory;
 import com.web.model.Admin;
 import com.web.model.Mobile;
 import com.web.model.MobileCase;
@@ -149,14 +151,13 @@ public class MyServiceImpl implements MyServiceInterface {
 	}
 
 	public void changeStatus(long id) {
-		// TODO Auto-generated method stub
 
 	}
 
 	public String persistShoe(Shoe shoe) {
 		System.out.println(shoe.getName());
 		entityManager.persist(shoe);
-		return shoe.getName();// TODO Auto-generated method stub
+		return shoe.getName();
 	}
 
 	public void updateShoe(Shoe shoe) {
@@ -185,6 +186,13 @@ public class MyServiceImpl implements MyServiceInterface {
 
 	public Mobile getMobile(long id) {
 		Mobile mobile = entityManager.find(Mobile.class, id);
+		System.out.println(mobile.getAccessories().size());
+		return mobile;
+	}
+
+	public Mobile getMobileWithAccessory(long id) {
+		Mobile mobile = entityManager.find(Mobile.class, id);
+		System.out.println(mobile.getAccessories().size());
 		return mobile;
 	}
 
@@ -199,7 +207,6 @@ public class MyServiceImpl implements MyServiceInterface {
 	}
 
 	public void deleteMobile(long id) {
-		// TODO Auto-generated method stub
 		System.out.println("Enter delete mobile");
 		Mobile mobile = this.getMobile(id);
 		System.out.println("Delete mobile" + mobile.getName());
@@ -219,11 +226,32 @@ public class MyServiceImpl implements MyServiceInterface {
 			entityManager.remove(powerBank);
 	}
 
-	public void updateMobile(Mobile mobile) {
-		// TODO Auto-generated method stub
-		System.out.println(mobile.getName() + " updating");
+	public void updateMobile(Mobile mobile, List<String> mobileAccessoriesName) {
 
-		Mobile updateMobile = this.getMobile(mobile.getItemID());
+		System.out.println(mobile.getName() + " updating");
+		List<String> oldMobileAccessoriesName = new ArrayList<String>();
+
+		Mobile updateMobile = entityManager.find(Mobile.class, mobile.getItemID());
+		System.out.println(updateMobile.getAccessories().size() + "size");
+		for (Accessory acc : updateMobile.getAccessories()) {
+			System.out.println(acc.getName());
+			oldMobileAccessoriesName.add(acc.getName());
+		}
+
+		for (String name : mobileAccessoriesName) {
+			System.out.println(name + "new acc");
+			if (!oldMobileAccessoriesName.contains(name)) {
+
+				String pic = name.replaceAll("\\s", "");
+				System.out.println(pic + "trim");
+				Accessory acc = this.getAccessory(pic);
+				System.out.println(acc.getName() + "acc name");
+				updateMobile.getAccessories().add(acc);
+				acc.getMobiles().add(updateMobile);
+				entityManager.merge(acc);
+			}
+		}
+
 		updateMobile.setName(mobile.getName());
 		updateMobile.setPrice(mobile.getPrice());
 		updateMobile.setPic(mobile.getPic());
@@ -231,12 +259,12 @@ public class MyServiceImpl implements MyServiceInterface {
 		updateMobile.setCamera(mobile.getCamera());
 		updateMobile.setInternalStorage(mobile.getInternalStorage());
 		updateMobile.setIsSupportExternalCard(mobile.getIsSupportExternalCard());
-
 		updateMobile.setOperatingSystem(mobile.getOperatingSystem());
 		updateMobile.setRam(mobile.getRam());
 		updateMobile.setScreen(mobile.getScreen());
 		updateMobile.setDescription(mobile.getDescription());
-		// System.out.println("update");
+		System.out.println("update");
+
 		entityManager.merge(updateMobile);
 	}
 
@@ -265,4 +293,45 @@ public class MyServiceImpl implements MyServiceInterface {
 		updatePowerBank.setDescription(powerBank.getDescription());
 		entityManager.merge(updatePowerBank);
 	}
+
+	public Collection<Accessory> getAllAccessories() {
+		Query query = entityManager.createQuery("from Accessory");
+		return query.getResultList();
+	}
+
+	public Collection<String> getAllAccessoriesName() {
+		Query query = entityManager.createQuery("select name from Accessory");
+		return query.getResultList();
+	}
+
+	public Collection<Accessory> getMobileCases() {
+		Query query = entityManager.createQuery("from MobileCase");
+		return query.getResultList();
+	}
+
+	public Collection<Accessory> getPowerBanks() {
+		Query query = entityManager.createQuery("from PowerBank");
+		return query.getResultList();
+	}
+
+	public Collection getMobileCasesName() {
+		Query query = entityManager.createQuery("select name from MobileCase");
+		return query.getResultList();
+
+	}
+
+	public Collection getPowerBanksName() {
+		Query query = entityManager.createQuery("select name from PowerBank");
+		return query.getResultList();
+
+	}
+
+	public Accessory getAccessory(String pic) {
+		System.out.println(pic);
+
+		Query query = entityManager.createQuery("from Accessory Where pic = :pic");
+		query.setParameter("pic", pic);
+		return (Accessory) query.getSingleResult();
+	}
+
 }

@@ -7,7 +7,7 @@ public class MobileCase extends Accessory {
 	public MobileCase() {
 	}
 
-	public MobileCase(String name, long price, String color, String pic, String description) {
-		super(name, price, color, pic, description);
+	public MobileCase(String name, long price, String color, String pic, String description, String type) {
+		super(name, price, color, pic, description, type);
 	}
 }

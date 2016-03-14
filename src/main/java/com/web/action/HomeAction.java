@@ -34,18 +34,24 @@ public class HomeAction extends ActionSupport {
 	public String execute() throws Exception {
 //		MobileFacetory mobileFacetory = new MobileFacetory();
 //		for (Integer i = 1; i < 7; i++) {
-//			System.out.println(i);
+//
 //			Mobile mobile = mobileFacetory.getModelMobile("Phone " + i.toString());
 //			MobileCase mobileCase = mobileFacetory.getMobileCase("Mobile Case " + i.toString());
 //			PowerBank powerBank = mobileFacetory.getPoweBank("Power Bank " + i.toString());
+//
 //			mobile.getAccessories().add(mobileCase);
+//			// mobileCase.getMobiles().add(mobile);
+//
 //			mobile.getAccessories().add(powerBank);
-//			myService.persistMobileCase(mobileCase);
+//			// powerBank.getMobiles().add(mobile);
+//
+//			System.out.println("error" + i);
+//
+//			 myService.persistMobileCase(mobileCase);
 //			myService.persistPowerBank(powerBank);
-//			myService.persistMobile(mobile);
+//			 myService.persistMobile(mobile);
 //		}
 
-		shoes = myService.getListOfItem("Shoe");
 		mobiles = myService.getListOfItem("Mobile");
 		mobileCases = myService.getListOfItem("MobileCase");
 		powerBanks = myService.getListOfItem("PowerBank");

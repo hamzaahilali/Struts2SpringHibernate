@@ -109,7 +109,7 @@
 		</action>
 		<!-- Mobile ********************************************************** -->
 		<action name="EditMobileActionForm" class="com.web.action.MobileAction"
-			method="showDetail">
+			method="editProduct">
 			<result>/Admin/EditMobile.jsp</result>
 		</action>
 

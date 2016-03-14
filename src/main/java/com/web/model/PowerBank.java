@@ -9,9 +9,9 @@ public class PowerBank extends Accessory {
 	public PowerBank() {
 	}
 
-	public PowerBank(String name, long price, String color, String pic, String description, int capacity) {
+	public PowerBank(String name, long price, String color, String pic, String description, int capacity, String type) {
 
-		super(name, price, color, pic, description);
+		super(name, price, color, pic, description, type);
 		this.capacity = capacity;
 
 	}

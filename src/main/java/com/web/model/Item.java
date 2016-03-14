@@ -22,19 +22,19 @@ public abstract class Item {
 	private String color;
 	private String pic;
 	private String description;
+	private String type;
 
 	public Item() {
 	}
-	
 
-	public Item(String name, long price, String color, String pic, String description) {
+	public Item(String name, long price, String color, String pic, String description, String type) {
 		this.name = name;
 		this.price = price;
 		this.color = color;
 		this.pic = pic;
 		this.description = description;
+		this.type = type;
 	}
-
 
 	public String getName() {
 		return name;
@@ -87,15 +87,20 @@ public abstract class Item {
 		this.pic = pic;
 	}
 
-
 	public String getDescription() {
 		return description;
 	}
 
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 }

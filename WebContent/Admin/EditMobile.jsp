@@ -41,6 +41,8 @@
 			<s:textarea name="description" rows="4" cols="50" label="Description"
 				value="%{description}">
 			</s:textarea>
+			<s:checkboxlist label="Add accessories" list="allAccessoriesName"
+				name="mobileAccessoriesName" value="mobileAccessoriesName" />
 			<s:submit />
 		</s:form>
 	</s:push>
