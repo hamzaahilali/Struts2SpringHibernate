@@ -1,0 +1,634 @@
+@import
+	url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic)
+	;
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 14px;
+	color: #666;
+}
+
+div.button {
+	margin-top: 20px;
+	margin-left: 30px;
+	margin-bottom: 60px;
+	width: 100%;
+	height: 20px;
+	margin-left: 30px;
+}
+
+span.totalAmount {
+	text-shadow: 2px 2px 2px rgba(255, 255, 255, 1);
+	font-weight: normal;
+	color: #2E1582;
+	font-size: 18px;
+	text-align: left;
+	font-family: comic sans, comic sans ms, cursive, verdana, arial,
+		sans-serif;
+}
+
+.buttonLogin {
+	width: 100px;
+	height: 20px;
+	float: left;
+	margin-left: 10px;
+	-moz-box-shadow: 0px 2px 0px 0px #276873;
+	-webkit-box-shadow: 0px 2px 0px 0px #276873;
+	box-shadow: 0px 2px 0px 0px #276873;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #599bb3
+		), color-stop(1, #408c99));
+	background: -moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background: -webkit-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background: -o-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background: -ms-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3',
+		endColorstr='#408c99', GradientType=0);
+	background-color: #599bb3;
+	-moz-border-radius: 19px;
+	-webkit-border-radius: 19px;
+	border-radius: 14px;
+	border: 1px solid #29668f;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 17px;
+	font-weight: bold;
+	padding: 20px 40px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #3d768a;
+	-moz-box-shadow: 0px 2px 0px 0px #276873;
+}
+
+.buttonLogout {
+	width: 180px;
+	height: 62px;
+	float: left;
+	margin-left: 10px;
+	-moz-box-shadow: 0px 2px 0px 0px #276873;
+	-webkit-box-shadow: 0px 2px 0px 0px #276873;
+	box-shadow: 0px 2px 0px 0px #276873;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #599bb3
+		), color-stop(1, #408c99));
+	background: -moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background: -webkit-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background: -o-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background: -ms-linear-gradient(top, #599bb3 5%, #408c99 100%);
+	background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3',
+		endColorstr='#408c99', GradientType=0);
+	background-color: #599bb3;
+	-moz-border-radius: 19px;
+	-webkit-border-radius: 19px;
+	border-radius: 14px;
+	border: 1px solid #29668f;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 17px;
+	font-weight: bold;
+	padding: 20px 40px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #3d768a;
+	-moz-box-shadow: 0px 2px 0px 0px #276873;
+}
+
+.buttonLogout:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #408c99
+		), color-stop(1, #599bb3));
+	background: -moz-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background: -webkit-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background: -o-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background: -ms-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99',
+		endColorstr='#599bb3', GradientType=0);
+	background-color: #408c99;
+}
+
+.buttonLogin:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #408c99
+		), color-stop(1, #599bb3));
+	background: -moz-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background: -webkit-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background: -o-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background: -ms-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99',
+		endColorstr='#599bb3', GradientType=0);
+	background-color: #408c99;
+}
+
+.buttonLogin:active {
+	position: relative;
+	top: 1px;
+}
+
+.buttonLogout:active {
+	position: relative;
+	top: 1px;
+}
+
+#lean_overlay {
+	position: fixed;
+	z-index: 100;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	display: none;
+}
+
+.popupContainer {
+	position: absolute;
+	width: 330px;
+	height: auto;
+	left: 45%;
+	top: 80px;
+	background: #FFF;
+}
+
+.btn {
+	padding: 10px 20px;
+	background: #F4F4F2;
+}
+
+.btn_red {
+	background: #ED6347;
+	color: #FFF;
+}
+
+.btn:hover {
+	background: #E4E4E2;
+}
+
+.btn_red:hover {
+	background: #C12B05;
+}
+
+.btn_red_cart {
+	height: 30px;
+	background: #ED6347;
+	color: #FFF;
+}
+
+.btn_red_cart :hover {
+	background: #C12B05;
+}
+
+a.btn {
+	color: #666;
+	text-align: center;
+	text-decoration: none;
+}
+
+a.btn_red {
+	color: #FFF;
+}
+
+.one_half {
+	width: 50%;
+	display: block;
+	float: left;
+}
+
+.one_half.last {
+	width: 45%;
+	margin-left: 5%;
+}
+
+/* Popup Styles*/
+.popupHeader {
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.popupHeader {
+	background: #F4F4F2;
+	position: relative;
+	padding: 10px 20px;
+	border-bottom: 1px solid #DDD;
+	font-weight: bold;
+}
+
+.popupHeader .modal_close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 10px 15px;
+	background: #E4E4E2;
+	cursor: pointer;
+	color: #aaa;
+	font-size: 16px;
+}
+
+.popupBody {
+	padding: 20px;
+}
+
+/* Social Login Form */
+.social_login {
+	
+}
+
+.social_login .social_box {
+	display: block;
+	clear: both;
+	padding: 10px;
+	margin-bottom: 10px;
+	background: #F4F4F2;
+	overflow: hidden;
+}
+
+.social_login .icon {
+	display: block;
+	width: 10px;
+	padding: 5px 10px;
+	margin-right: 10px;
+	float: left;
+	color: #FFF;
+	font-size: 16px;
+	text-align: center;
+}
+
+.social_login .fb .icon {
+	background: #3B5998;
+}
+
+.social_login .google .icon {
+	background: #DD4B39;
+}
+
+.social_login .icon_title {
+	display: block;
+	padding: 5px 0;
+	float: left;
+	font-weight: bold;
+	font-size: 16px;
+	color: #777;
+}
+
+.social_login .social_box:hover {
+	background: #E4E4E2;
+}
+
+.centeredText {
+	text-align: center;
+	margin: 20px 0;
+	clear: both;
+	overflow: hidden;
+	text-transform: uppercase;
+}
+
+.action_btns {
+	clear: both;
+	overflow: hidden;
+}
+
+.action_btns a {
+	display: block;
+}
+
+/* User Login Form */
+.user_login {
+	display: none;
+}
+
+.user_login label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.user_login input[type="text"], .user_login input[type="email"],
+	.user_login input[type="password"] {
+	display: block;
+	width: 90%;
+	padding: 10px;
+	border: 1px solid #DDD;
+	color: #666;
+}
+
+.user_login input[type="checkbox"] {
+	float: left;
+	margin-right: 5px;
+}
+
+.user_login input[type="checkbox"]+label {
+	float: left;
+}
+
+.user_login .checkbox {
+	margin-bottom: 10px;
+	clear: both;
+	overflow: hidden;
+}
+
+.forgot_password {
+	display: block;
+	margin: 20px 0 10px;
+	clear: both;
+	overflow: hidden;
+	text-decoration: none;
+	color: #ED6347;
+}
+
+/* User Register Form */
+.user_register {
+	display: none;
+}
+
+.user_register label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.user_register input[type="text"], .user_register input[type="email"],
+	.user_register input[type="password"] {
+	display: block;
+	width: 90%;
+	padding: 10px;
+	border: 1px solid #DDD;
+	color: #666;
+}
+
+.user_register input[type="checkbox"] {
+	float: left;
+	margin-right: 5px;
+}
+
+.user_register input[type="checkbox"]+label {
+	float: left;
+}
+
+.user_register .checkbox {
+	margin-bottom: 10px;
+	clear: both;
+	overflow: hidden;
+}
+
+@CHARSET "UTF-8";
+
+.shopping {
+	width: 100px;
+	height: 40px;
+	z-index: 9999;
+	left: 10px;
+	position: fixed;
+}
+
+.info-title {
+	margin-left: 20px;
+	float: left;
+	width: 98%;
+	background: #fafafa;
+	border-left: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	margin: 15px 0x 0px 5px;
+}
+
+.row-fluid {
+	width: 100%;
+}
+
+.info-phone-left {
+	float: left;
+}
+
+.info-phone-left h3 {
+	font-size: 19px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	padding: 10px 10px;
+}
+
+.info-phone-left h3 {
+	background: #7ac142;
+	position: relative;
+	color: #fff;
+	font-family: 'Roboto-Bold', san-serif;
+}
+
+.info-phone-left h3:after {
+	content: " ";
+	display: block;
+	width: 0;
+	height: 0;
+	margin-left: 2px;
+	border-top: 20px solid transparent;
+	border-left: 13px solid #7ac142;
+	border-right: 0 solid transparent;
+	border-bottom: 20px solid transparent;
+	position: absolute;
+	top: 0;
+	right: -10px;
+}
+
+.total {
+	margin: 0;
+	color: red;
+	margin-left: 5px;
+}
+
+.total h1 {
+	margin: 0;
+	color: red;
+	margin-left: 5px;
+}
+
+.buttonDelete {
+	-moz-box-shadow: inset -13px 50px 6px -24px #3dc21b;
+	-webkit-box-shadow: inset -13px 50px 6px -24px #3dc21b;
+	box-shadow: inset -13px 50px 6px -24px #3dc21b;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #44c767
+		), color-stop(1, #5cbf2a));
+	background: -moz-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+	background: -webkit-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+	background: -o-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+	background: -ms-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+	background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#44c767',
+		endColorstr='#5cbf2a', GradientType=0);
+	background-color: #44c767;
+	-moz-border-radius: 9px;
+	-webkit-border-radius: 9px;
+	border-radius: 9px;
+	border: 4px solid #18ab29;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 12px 19px;
+	text-decoration: none;
+	text-shadow: -4px 1px 12px #2f6627;
+}
+
+.buttonDelete:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cbf2a
+		), color-stop(1, #44c767));
+	background: -moz-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+	background: -webkit-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+	background: -o-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+	background: -ms-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+	background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cbf2a',
+		endColorstr='#44c767', GradientType=0);
+	background-color: #5cbf2a;
+}
+
+.buttonDelete:active {
+	position: relative;
+	top: 1px;
+}
+
+.welcome {
+	width: 100%;
+	height: 50px;
+	float: bottom;
+	margin-left: 30px;
+	margin-bottom: 5px;
+	text-shadow: 1px 1px 1px rgba(17, 36, 15, 1);
+	font-weight: normal;
+	color: #2E1582;
+	background-color: #FFFFFF;
+	letter-spacing: 1pt;
+	word-spacing: 2pt;
+	font-size: 26px;
+	text-align: left;
+	font-family: comic sans, comic sans ms, cursive, verdana, arial,
+		sans-serif;
+	line-height: 1;
+}
+
+table.item {
+	border-collapse: collapse;
+	width: 80%;
+}
+
+table.item th, td {
+	text-align: center;
+	padding: 8px;
+}
+
+table.item tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
+table.item th {
+	background-color: #4CAF10;
+	color: white;
+}
+
+.homeIcon {
+	margin-left: 0px;
+}
+
+.shoppingCart {
+	margin-left: 0px;
+	font-size: 18px;
+}
+
+.shoppingContainer {
+	margin-left: 30px;
+	width: 100%;
+}
+
+#buttonBuy {
+	background: #3498db;
+	background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+	background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+	background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+	background-image: -o-linear-gradient(top, #3498db, #2980b9);
+	background-image: linear-gradient(to bottom, #3498db, #2980b9);
+	-webkit-border-radius: 28;
+	-moz-border-radius: 28;
+	border-radius: 28px;
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 20px;
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
+}
+
+#buttonBuy:hover {
+	background: #3cb0fd;
+	background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+	background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+	background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+	background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+	background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+	text-decoration: none;
+}
+
+div.itemContainer {
+	margin-left: 30px;
+	float: left;
+	width: 100%;
+	background-color: #3498db;
+	margin-bottom: 20px;
+}
+/* CSS by GenerateCSS.com */
+div.itemDetail {
+	color: #FFFFFF;
+	float: left;
+	list-style-type: circle;
+	list-style-image: url("");
+	list-style-position: outside;
+	list-style-type: circle;
+	font-size: 18px;
+	width: 400px;
+}
+
+div.itemDetail li {
+	padding: 8px;
+	margin: 3px;
+	font-size: 16px;
+}
+
+div.itemImage {
+	float: left;
+}
+
+div.accessories {
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+div.accessories h2 {
+	width: 400px;
+	font-size: 25px;
+	color: #2E1582;
+	margin-top: 10px;
+}
+
+.edit {
+	margin-left: 5px;
+	float: left;
+}
+
+.edit div {
+	float: left;
+}
+
+.buttonAdmin {
+	position: absolute;
+	height: 10px;
+	right: 120px;
+	text-align: center;
+	color: #ff0000;
+	font-family: Arial;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 10px 20px;
+	text-shadow: 0px 1px 0px #3d768a;
+	-moz-box-shadow: 0px 2px 0px 0px #276873;
+}

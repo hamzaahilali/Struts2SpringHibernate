@@ -6,34 +6,51 @@
 <struts>
 	<constant name="struts.devMode" value="true" />
 
+	<package name="json" namespace="/" extends="struts-default,json-default">
+		<action name="getJSONResult" class="com.web.action.JSONDataAction">
+			<result type="json" />
+		</action>
+		<action name="GetTotalAction" class="com.web.action.ShoppingAction"
+			method="getTotalAmountAndMoney">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+	</package>
+
 	<package name="default" namespace="/" extends="struts-default">
 		<action name="LoginFormAction">
 			<result>User/Login.jsp</result>
 		</action>
-
-		<action name="LoginAction" class="com.web.action.LoginAction">
-			<result type="redirectAction">
-				<param name="actionName">HomeAction</param>
-				<param name="namespace">/</param>
+		<action name="LoginAction" class="com.web.action.UserAction"
+			method="login">
+			<result type="httpheader">
 			</result>
-			<result name="input">User/Login.jsp</result>
 		</action>
 
 
 		<action name="RegisterFormAction">
 			<result>User/Register.jsp</result>
 		</action>
+
 		<action name="SuccessLoginAction" class="com.web.action.SuccessLoginAction">
-			<result name="success">User/SuccessLogin.jsp</result>
+			<result name="success"> User/SuccessLogin.jsp</result>
 		</action>
 
-		<action name="RegisterAction" class="com.web.action.RegisterAction">
-			<result>User/SuccessRegister.jsp</result>
-			<result name="input">User/Register.jsp</result>
+		<action name="RegisterAction" class="com.web.action.UserAction"
+			method="register">
+			<result type="httpheader">
+			</result>
+		</action>
+
+		<action name="LogOutAction" class="com.web.action.UserAction"
+			method="logout">
+			<result type="httpheader">
+			</result>
 		</action>
 
 		<action name="HomeAction" class="com.web.action.HomeAction">
-			<result> User/HomePage.jsp</result>
+			<result name="success">/User/HomePage.jsp</result>
 		</action>
 		<!-- MObile -->
 		<action name="ShowMobileAction" class="com.web.action.MobileAction"
@@ -45,12 +62,44 @@
 			method="showDetail">
 			<result name="success">User/ShowPowerBankDetail.jsp</result>
 		</action>
-		<!-- Mobile Case -->
+		<!-- /PowerBank *************************************************** -->
+
+		<!-- Mobile Case *************************************************** -->
 
 		<action name="ShowMobileCaseAction" class="com.web.action.MobileCaseAction"
 			method="showDetail">
 			<result name="success">User/ShowMobileCaseDetail.jsp</result>
 		</action>
+		<!-- /Mobile Case *************************************************** -->
+
+		<!-- Shoping Action *************************************************** -->
+
+		<action name="ViewShoppingCartAction" class="com.web.action.ShoppingAction"
+			method="viewShoppingCart">
+			<result name="success"> User/ViewShopingCart.jsp </result>
+		</action>
+
+
+
+		<action name="AddItemAction" class="com.web.action.ShoppingAction"
+			method="addItem">
+			<result type="httpheader">
+			</result>
+		</action>
+
+		<action name="BuyItemAction" class="com.web.action.ShoppingAction"
+			method="buy">
+			<result type="redirectAction">
+				<param name="actionName">HomeAction</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+
+		<action name="DeteleItemAction" class="com.web.action.ShoppingAction"
+			method="deleteItem">
+			<result type="httpheader" />
+		</action>
+		<!-- /Shoping Action *************************************************** -->
 
 		<action name="AdminLoginForm">
 			<result>User/AdminLogin.jsp</result>
@@ -175,5 +224,21 @@
 			</result>
 		</action>
 		<!-- /Power Bank ***************************************************** -->
+		<action name="ViewAllShoppingCartAction" class="com.web.action.ShoppingCartAction"
+			method="showDetail">
+			<result name="success">/Admin/ViewAllShoppingCarts.jsp</result>
+		</action>
+		<action name="ViewShoppingCartAction" class="com.web.action.ShoppingCartAction"
+			method="showShopingCartDetail">
+			<result name="success">/Admin/ViewShoppingCartDetail.jsp</result>
+		</action>
+
+		<action name="UpdateShoppingCartAction" class="com.web.action.ShoppingCartAction"
+			method="updateShoppingCart">
+			<result type ="httpheader"></result>
+		</action>
+
+		<!-- Shopping Carts -->
+		<!-- /Shopping Carts -->
 	</package>
 </struts>
