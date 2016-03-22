@@ -55,12 +55,12 @@ public class MobileAction extends ActionSupport implements ProductActionInterfac
 	}
 
 	public String showDetail() {
-		mobile = myService.getMobileWithAccessory(mobile.getItemID());
+		mobile = myService.getMobileWithAccessory(mobile.getUniqueName());
 		return SUCCESS;
 	}
 
 	public String editProduct() {
-		mobile = myService.getMobileWithAccessory(mobile.getItemID());
+		mobile = myService.getMobileWithAccessory(mobile.getUniqueName());
 
 		for (Accessory acc : mobile.getAccessories()) {
 			mobileAccessoriesName.add(acc.getName());

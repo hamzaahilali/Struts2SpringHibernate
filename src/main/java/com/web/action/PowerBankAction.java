@@ -30,7 +30,7 @@ public class PowerBankAction extends ActionSupport implements ProductActionInter
 	}
 
 	public String showDetail() {
-		powerBank = myService.getPowerBank(powerBank.getItemID());
+		powerBank = myService.getPowerBank(powerBank.getUniqueName());
 		System.out.println("get PowerBank" + powerBank.getName());
 		return SUCCESS;
 	}

@@ -30,7 +30,7 @@ public class MobileCaseAction extends ActionSupport implements ProductActionInte
 	}
 
 	public String showDetail() {
-		mobileCase = myService.getMobileCase(mobileCase.getItemID());
+		mobileCase = myService.getMobileCase(mobileCase.getUniqueName());
 		System.out.println("get mobile case" + mobileCase.getName());
 		return SUCCESS;
 	}

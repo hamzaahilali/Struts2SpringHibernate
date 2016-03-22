@@ -120,13 +120,20 @@ public class ShoppingAction extends ActionSupport implements ModelDriven<Item>, 
 
 	}
 
-	public String getTotalItemAmount() {
+	public String getTotalAmountAndMoney() {
 		System.out.println("gettooooooooooooooo");
+		if (session.get("totalAmount") == null) {
+			session.put("totalAmount", new Long(0));
+		}
+		if (session.get("totalPrice") == null) {
+			session.put("totalPrice", new Long(0));
+		}
+		jsonData.put("totalAmount", session.get("totalAmount"));
+		jsonData.put("totalMoney", session.get("totalPrice"));
+		jsonData.put("userName", session.get("userName"));
 		response.setContentType("application/json");
 
-		jsonData.put("totalAmount", (Long) session.get("totalAmount"));
-
-		String json = new Gson().toJson((Long) session.get("totalAmount"));
+		String json = new Gson().toJson(jsonData);
 		try {
 			response.getWriter().print(json);
 			response.getWriter().flush();
@@ -167,16 +174,41 @@ public class ShoppingAction extends ActionSupport implements ModelDriven<Item>, 
 	}
 
 	public String buy() {
-		// shoppingCart = (ShoppingCart) session.get("shoppingCart");
-		// shoppingCart.setStatus("On going");
-		// for (OrderedItem orderedItem : shoppingCart.getOrderedItems()) {
-		// myService.persistOrderedItem(orderedItem);
-		// }
-		// User user = (User) session.get("user");
-		// user = myService.getUser(user.getUserId());
-		// shoppingCart.setUser(user);
-		// myService.persistShoppingCart(shoppingCart);
+		System.out.println("enter Buying");
+		HashMap mapOrderedItems = (HashMap) session.get("mapOrderedItems");
+		shoppingCart = new ShoppingCart();
+		shoppingCart.setCreatedDate(new Date());
 
+		if (mapOrderedItems != null) {
+			Iterator itr = mapOrderedItems.entrySet().iterator();
+
+			while (itr.hasNext()) {
+				Map.Entry entry = (Entry) itr.next();
+				OrderedItem tmpOrderedItem = (OrderedItem) entry.getValue();
+				shoppingCart.getOrderedItems().add((OrderedItem) entry.getValue());
+				System.out.println((OrderedItem) entry.getValue());
+			}
+		}
+
+		shoppingCart.setStatus("On going");
+
+		User user = (User) session.get("user");
+		System.out.println("get User ID");
+
+		System.out.println("get User ID" + user.getUserId());
+		user = myService.getUser(user.getUserId());
+		shoppingCart.setUser(user);
+		myService.persistShoppingCart(shoppingCart);
+
+		session.put("mapOrderedItems", new HashMap<Long, OrderedItem>());
+		session.put("totalAmount", new Long(0));
+		session.put("totalPrice", new Long(0));
+		// if (session instanceof org.apache.struts2.dispatcher.SessionMap) {
+		// try {
+		// ((org.apache.struts2.dispatcher.SessionMap) session).invalidate();
+		// } catch (IllegalStateException e) {
+		// }
+		// }
 		return SUCCESS;
 	}
 

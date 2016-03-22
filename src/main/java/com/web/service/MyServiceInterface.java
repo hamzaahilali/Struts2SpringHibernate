@@ -7,10 +7,13 @@ import java.util.List;
 
 import com.web.model.Accessory;
 import com.web.model.Admin;
+import com.web.model.Item;
 import com.web.model.Mobile;
 import com.web.model.MobileCase;
+import com.web.model.OrderedItem;
 import com.web.model.PowerBank;
 import com.web.model.Shoe;
+import com.web.model.ShoppingCart;
 import com.web.model.User;
 
 public interface MyServiceInterface {
@@ -20,6 +23,8 @@ public interface MyServiceInterface {
 	public void updateUser(User user);
 
 	public User authenticateUser(String username, String password);
+
+	public boolean authenticateEmail(String email);
 
 	public Admin authenticateAdmin(String adminName, String password);
 
@@ -53,13 +58,23 @@ public interface MyServiceInterface {
 
 	public void persistPowerBank(PowerBank powerBank);
 
+	public void persistShoppingCart(ShoppingCart shoppingCart);
+
+	public void persistOrderedItem(OrderedItem orderedItem);
+
 	public Mobile getMobile(long id);
 
 	public Mobile getMobileWithAccessory(long id);
 
+	public Mobile getMobileWithAccessory(String uniqueName);
+
 	public MobileCase getMobileCase(long id);
 
+	public MobileCase getMobileCase(String uniqueName);
+
 	public PowerBank getPowerBank(long id);
+
+	public PowerBank getPowerBank(String uniqueName);
 
 	public void deleteMobile(long id);
 
@@ -72,6 +87,8 @@ public interface MyServiceInterface {
 	public void updateMobileCase(MobileCase mobileCase);
 
 	public void updatePowerBank(PowerBank powerBank);
+
+	public Item getItem(long id);
 
 	public Collection getMobileCases();
 
@@ -86,4 +103,11 @@ public interface MyServiceInterface {
 	public Collection getAllAccessories();
 
 	public Collection getAllAccessoriesName();
+
+	public ShoppingCart getShoppingCart(long id);
+
+	public Collection<ShoppingCart> getAllShoppingCart();
+
+	public void updateShoppingCart(long id, String status);
+
 }

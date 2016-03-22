@@ -44,6 +44,16 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Sess
 		return SUCCESS;
 	}
 
+	public String logout() {
+		if (session instanceof org.apache.struts2.dispatcher.SessionMap) {
+			try {
+				((org.apache.struts2.dispatcher.SessionMap) session).invalidate();
+			} catch (IllegalStateException e) {
+			}
+		}
+		return SUCCESS;
+	}
+
 	public String login() throws Exception {
 		User validUser = getMyService().authenticateUser(user.getUserName(), user.getPassword());
 		System.out.println("after get user" + validUser.getUserName());
@@ -55,10 +65,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User>, Sess
 			session.put("userName", validUser.getUserName());
 			System.out.println("session put " + validUser.getUserName());
 			response.getWriter().print("success");
-			//response.setStatus(500);
-			
+			// response.setStatus(500);
+
 		} else {
-			//response.setStatus(401);
+			// response.setStatus(401);
 			System.out.println("input");
 			response.getWriter().print("input");
 

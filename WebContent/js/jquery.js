@@ -37,14 +37,29 @@ $(function() {
 	});
 
 	$("#buttonLogout").click(function() {
-		
-		$.post("LogOutAction", function(data, status) {
-			$.simplyToast("Log out successfully", 'success');
-			setTimeout(function() {
-				window.location.reload();
 
-			}, 2000)
+		$.ajax({
+			type : 'POST',
+			url : 'GetTotalAction',
+			headers : {
+				Accept : "application/json; charset = charset=utf-8",
+				"Content-type" : "application/json,charset=utf-8"
+			},
 
+			success : function(data) {
+				if (!data.userName) {
+					$.simplyToast(" Plesse log in first :)", 'danger');
+				} else {
+					$.post("LogOutAction", function(data, status) {
+						$.simplyToast("Log out successfully", 'success');
+						setTimeout(function() {
+							window.location.reload();
+
+						}, 2000)
+
+					});
+				}
+			}
 		});
 
 	});
@@ -54,32 +69,58 @@ $(function() {
 		var name = $("#userName").val();
 		var pass = $("#password").val();
 		var errorMessage = "";
-		{
-			$.post("LoginAction", {
-				userName : name,
-				password : pass
-			}, function(data, status) {
 
-				if (data == "input") {
-					$.simplyToast(
+		$.ajax({
+			type : 'POST',
+			url : 'GetTotalAction',
+			headers : {
+				Accept : "application/json; charset = charset=utf-8",
+				"Content-type" : "application/json,charset=utf-8"
+			},
 
-					" User does not exist, Please register", 'danger');
-				} else {
-					$.simplyToast(
+			success : function(data) {
+				if (data.userName)
+					$.simplyToast(" you are already logged in :)", 'danger');
+				else
 
-					"Login Successfully", 'success');
-					setTimeout(function() {
-						window.location.reload();
-					}, 1000);
+				{
+					$.post("LoginAction", {
+						userName : name,
+						password : pass
+					}, function(data, status) {
 
+						if (data == "input") {
+							$.simplyToast(
+
+							" User does not exist, Please register", 'danger');
+						} else {
+							$.simplyToast(
+
+							"Login Successfully", 'success');
+							setTimeout(function() {
+								window.location.reload();
+							}, 1000);
+
+						}
+
+					});
 				}
+			}
+		});
 
-			});
-		}
 		return false;
 	})
 
 });
+function showMobileAction(itemID) {
+	alert(itemID);
+	$.post("ShowMobileAction.action", {
+		itemID : itemID
+	}, function(data, status) {
+		alert("dome");
+	});
+	return false;
+}
 
 function addItem(itemID, name, price, pic) {
 	$.post("AddItemAction", {
@@ -168,3 +209,55 @@ $(function() {
 	});
 
 })
+
+$(function() {
+
+	$("#buttonBuy")
+			.click(
+					function() {
+
+						$
+								.ajax({
+									type : 'POST',
+									url : 'GetTotalAction',
+									headers : {
+										Accept : "application/json; charset = charset=utf-8",
+										"Content-type" : "application/json,charset=utf-8"
+									},
+
+									success : function(data) {
+										if (!data.userName) {
+											$.simplyToast(
+													"Please Login to continue",
+													"danger")
+											return;
+										}
+										if (data.totalAmount == 0) {
+											$.simplyToast(
+													"Please order some items",
+													"danger")
+											return;
+										}
+										$
+												.post(
+														"BuyItemAction",
+														function() {
+															$
+																	.simplyToast(
+																			"Thank you, Please go to your email and confirm this order",
+																			"success");
+															setTimeout(
+																	function() {
+																		$(
+																				"#HomeAction span")
+																				.trigger(
+																						"click");
+																	}, 2000);
+
+														});
+
+									}
+								});
+						return false;
+					})
+});

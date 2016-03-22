@@ -6,14 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
 </head>
 <body>
-
-	<s:if test="%{#session.USER!=null}">
-	Welcome:
-	<s:property value="#session.USER.userName" />
-	</s:if>
-
-
+	Welcome
+	<s:property value="#session.userName" />
 </body>
 </html>

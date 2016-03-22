@@ -35,10 +35,10 @@ public class AdminLoginAction extends ActionSupport implements SessionAware {
 
 		/* Check that fields are not empty */
 		if (getPassword().length() == 0) {
-			addFieldError("password", getText("password.required"));
+			addFieldError("password", "password required");
 		}
 		if (getAdminName().length() == 0) {
-			addFieldError("adminName", getText("userMame.required"));
+			addFieldError("adminName", "userMame required");
 		}
 	}
 

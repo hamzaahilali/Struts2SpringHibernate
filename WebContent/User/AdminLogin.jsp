@@ -10,7 +10,7 @@ input[type=text] {
 	width: 100%;
 	box-sizing: border-box;
 	border: 2px solid #ccc;
-	border-radius: 4px;
+	border-radius: 10px;
 	font-size: 16px;
 	background-color: white;
 	background-image: url('searchicon.png');
@@ -23,7 +23,7 @@ input[type=password] {
 	width: 100%;
 	box-sizing: border-box;
 	border: 2px solid #ccc;
-	border-radius: 4px;
+	border-radius: 10px;
 	font-size: 16px;
 	background-color: white;
 	background-image: url('searchicon.png');
@@ -32,23 +32,41 @@ input[type=password] {
 	padding: 12px 20px 12px 40px;
 }
 
-input[type=button], input[type=submit], input[type=reset] {
+input[type=submit] {
 	background-color: #4CAF50;
 	border: none;
+	border-radius: 16px;
 	color: white;
 	padding: 16px 32px;
 	text-decoration: none;
 	margin: 4px 2px;
 	cursor: pointer;
+	color: white;
+	font-size: 18px;
+}
+
+div.login {
+	border-color: green;
+	border-style : solid;
+	padding: 30px;
+	width: 400px;
+	margin: auto;
+	border-style: solid
+}
+
+label {
+	font-size: 18px;
 }
 </style>
 <title>Insert title here</title>
 </head>
 <body>
-	<s:form action="AdminLoginAction">
-		<s:textfield name="adminName" label="Admin Name" />
-		<s:password name="password" label="Password" />
-		<s:submit />
-	</s:form>
+	<div class='login'>
+		<s:form action="AdminLoginAction">
+			<s:textfield name="adminName" label="Admin Name" />
+			<s:password name="password" label="Password    " />
+			<s:submit value="Login" />
+		</s:form>
+	</div>
 </body>
 </html>

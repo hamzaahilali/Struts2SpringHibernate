@@ -2,33 +2,48 @@ package com.web.action;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.web.model.User;
 import com.web.service.MyServiceImpl;
 import com.web.service.MyServiceInterface;
 
-public class LoginAction extends ActionSupport implements SessionAware {
+public class LoginAction extends ActionSupport implements SessionAware, ServletResponseAware {
 
-	Map session;
+	Map<String, Object> session;
 	private String userName;
 	private String password;
 	private String email;
 	private MyServiceInterface myService;
+	private HttpServletResponse response;
 
 	@Override
 	public String execute() throws Exception {
 		User user = getMyService().authenticateUser(getUserName(), getPassword());
-		if (user == null) {
-			/* User not valid, return to input page. */
-			return INPUT;
+		System.out.println("after get user" + user.getUserName());
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		System.out.println("user name isssssssssssssssssssssssssss " + user.getUserName());
+		if (!(user.getUserName() == null)) {
+			System.out.println("Suscess");
+			session.put("user", user);
+			session.put("userName", user.getUserName());
+			response.getWriter().print("success");
 		} else {
-			session.put("USER", user);
-		}
+			System.out.println("input");
+			response.getWriter().print("input");
 
-		return SUCCESS;
+		}
+		response.getWriter().flush();
+		response.getWriter().close();
+		System.out.println("sucesss");
+		return Action.SUCCESS;
 	}
 
 	@Override
@@ -77,6 +92,11 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	public void setMyService(MyServiceInterface myService) {
 		this.myService = myService;
+	}
+
+	public void setServletResponse(HttpServletResponse response) {
+		this.response = response;
+
 	}
 
 }

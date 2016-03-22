@@ -14,7 +14,8 @@ public class Constant {
 
 	public static List<String> screenTypes = Arrays.asList("AMOLED", "LCD", "LED", "IPS", "TFT");
 	public static List<Boolean> yesOrNo = Arrays.asList(true, false);
-
+	public static List<String> status = Arrays.asList("on going", "delevering", "Done");
+	
 	public static List<String> getColors() {
 		return colors;
 	}
@@ -45,6 +46,14 @@ public class Constant {
 
 	public static void setYesOrNo(List<Boolean> yesOrNo) {
 		Constant.yesOrNo = yesOrNo;
+	}
+
+	public static List<String> getStatus() {
+		return status;
+	}
+
+	public static void setStatus(List<String> status) {
+		Constant.status = status;
 	}
 
 }

@@ -10,14 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Item {
+public class Item {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private long itemID;
 	private String name;
+	private String brand;
+	private String uniqueName;
 	private long price;
 	private String color;
 	private String pic;
@@ -26,6 +29,9 @@ public abstract class Item {
 
 	public Item() {
 	}
+
+	@OneToMany
+	private Collection<OrderedItem> orderedItems = new ArrayList<OrderedItem>();
 
 	public Item(String name, long price, String color, String pic, String description, String type) {
 		this.name = name;
@@ -42,17 +48,6 @@ public abstract class Item {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	@ManyToMany
-	Collection<ShoppingCart> shoppingCarts = new ArrayList<ShoppingCart>();
-
-	public Collection<ShoppingCart> getShoppingCarts() {
-		return shoppingCarts;
-	}
-
-	public void setShoppingCarts(Collection<ShoppingCart> shoppingCarts) {
-		this.shoppingCarts = shoppingCarts;
 	}
 
 	public long getItemID() {
@@ -101,6 +96,30 @@ public abstract class Item {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getUniqueName() {
+		return uniqueName;
+	}
+
+	public void setUniqueName(String uniqueName) {
+		this.uniqueName = uniqueName;
+	}
+
+	public Collection<OrderedItem> getOrderedItems() {
+		return orderedItems;
+	}
+
+	public void setOrderedItems(Collection<OrderedItem> orderedItems) {
+		this.orderedItems = orderedItems;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 
 }

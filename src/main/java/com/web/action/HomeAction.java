@@ -2,6 +2,10 @@ package com.web.action;
 
 import java.util.Collection;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.web.factory.MobileFacetory;
 import com.web.model.Mobile;
@@ -10,7 +14,7 @@ import com.web.model.PowerBank;
 import com.web.model.Shoe;
 import com.web.service.MyServiceInterface;
 
-public class HomeAction extends ActionSupport {
+public class HomeAction extends ActionSupport implements ServletRequestAware {
 	/**
 	 * 
 	 */
@@ -20,6 +24,7 @@ public class HomeAction extends ActionSupport {
 	Collection<Shoe> shoes;
 	Collection<PowerBank> powerBanks;
 	Collection<MobileCase> mobileCases;
+	public HttpServletRequest request;
 
 	public MyServiceInterface getMyService() {
 		return myService;
@@ -32,29 +37,35 @@ public class HomeAction extends ActionSupport {
 	@SuppressWarnings("unchecked")
 	@Override
 	public String execute() throws Exception {
-//		MobileFacetory mobileFacetory = new MobileFacetory();
-//		for (Integer i = 1; i < 7; i++) {
-//
-//			Mobile mobile = mobileFacetory.getModelMobile("Phone " + i.toString());
-//			MobileCase mobileCase = mobileFacetory.getMobileCase("Mobile Case " + i.toString());
-//			PowerBank powerBank = mobileFacetory.getPoweBank("Power Bank " + i.toString());
-//
-//			mobile.getAccessories().add(mobileCase);
-//			// mobileCase.getMobiles().add(mobile);
-//
-//			mobile.getAccessories().add(powerBank);
-//			// powerBank.getMobiles().add(mobile);
-//
-//			System.out.println("error" + i);
-//
-//			 myService.persistMobileCase(mobileCase);
-//			myService.persistPowerBank(powerBank);
-//			 myService.persistMobile(mobile);
-//		}
-
+		// MobileFacetory mobileFacetory = new MobileFacetory();
+		// for (Integer i = 1; i < 7; i++) {
+		//
+		// Mobile mobile = mobileFacetory.getModelMobile("Phone " +
+		// i.toString());
+		// MobileCase mobileCase = mobileFacetory.getMobileCase("Mobile Case " +
+		// i.toString());
+		// PowerBank powerBank = mobileFacetory.getPoweBank("Power Bank " +
+		// i.toString());
+		//
+		// mobile.getAccessories().add(mobileCase);
+		// // mobileCase.getMobiles().add(mobile);
+		//
+		// mobile.getAccessories().add(powerBank);
+		// // powerBank.getMobiles().add(mobile);
+		//
+		// System.out.println("error" + i);
+		//
+		// myService.persistMobileCase(mobileCase);
+		// myService.persistPowerBank(powerBank);
+		// myService.persistMobile(mobile);
+		// }
+		String contextPath = request.getContextPath();
+		System.out.println("Context Path " + contextPath);
+		System.out.println("Home Action");
 		mobiles = myService.getListOfItem("Mobile");
 		mobileCases = myService.getListOfItem("MobileCase");
 		powerBanks = myService.getListOfItem("PowerBank");
+		System.out.println("Success from HomeAction");
 		return SUCCESS;
 	}
 
@@ -88,6 +99,11 @@ public class HomeAction extends ActionSupport {
 
 	public void setMobileCases(Collection<MobileCase> mobileCases) {
 		this.mobileCases = mobileCases;
+	}
+
+	public void setServletRequest(HttpServletRequest request) {
+		this.request = request;
+
 	}
 
 }

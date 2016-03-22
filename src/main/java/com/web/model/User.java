@@ -25,7 +25,7 @@ public class User {
 	}
 
 	public void setAddress(String address) {
-		address = address;
+		this.address = address;
 	}
 
 	public Collection<ShoppingCart> getShoppingCarts() {
@@ -36,7 +36,7 @@ public class User {
 		this.shoppingCarts = shoppingCarts;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy = "user")
 	private Collection<ShoppingCart> shoppingCarts = new ArrayList<ShoppingCart>();
 
 	public Collection<ShoppingCart> getShoppingCart() {
