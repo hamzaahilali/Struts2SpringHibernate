@@ -29,6 +29,7 @@
 	</bean>
 
 
+
 	<!-- Data Source -->
 
 	<bean id="dataSource"
@@ -37,6 +38,7 @@
 		<property name="url" value="jdbc:mysql://localhost:3306/cuong" />
 		<property name="username" value="root" />
 		<property name="password" value="cathy278" />
+
 	</bean>
 
 	<!-- Enable Annotation based Declarative Transaction Management -->
